@@ -4,13 +4,19 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                 git branch: 'main', url: 'https://github.com/riddhisharma2230/playwright-scalable-framework.git'
+                git 'https://github.com/riddhisharma2230/playwright-scalable-framework.git'
             }
         }
 
         stage('Install Dependencies') {
             steps {
                 bat 'npm install'
+            }
+        }
+
+        stage('Install Playwright Browsers') {
+            steps {
+                bat 'npx playwright install'
             }
         }
 
