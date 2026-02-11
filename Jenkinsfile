@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        jdk 'JDK17'
+    }
+
     stages {
 
         stage('Install Dependencies') {
@@ -26,7 +30,7 @@ pipeline {
         always {
             allure([
                 includeProperties: false,
-                jdk: '',
+                jdk: 'JDK17',
                 results: [[path: 'allure-results']]
             ])
         }
