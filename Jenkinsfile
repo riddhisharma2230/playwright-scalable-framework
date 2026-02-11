@@ -2,11 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout Code') {
-            steps {
-                git 'https://github.com/riddhisharma2230/playwright-scalable-framework.git'
-            }
-        }
 
         stage('Install Dependencies') {
             steps {
@@ -22,7 +17,7 @@ pipeline {
 
         stage('Run Playwright Tests') {
             steps {
-                bat 'npx playwright test --reporter=line,allure-playwright'
+                bat 'npx playwright test'
             }
         }
     }
