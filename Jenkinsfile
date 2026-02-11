@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     stages {
-
         stage('Checkout Code') {
             steps {
                 git 'https://github.com/riddhisharma2230/playwright-scalable-framework.git'
@@ -23,14 +22,18 @@ pipeline {
 
         stage('Run Playwright Tests') {
             steps {
-                bat 'npx playwright test'
+                bat 'npx playwright test --reporter=line,allure-playwright'
             }
         }
+    }
 
-        stage('Generate Allure Report') {
-            steps {
-                bat 'allure generate allure-results --clean -o allure-report'
-            }
+    post {
+        always {
+            allure([
+                includeProperties: false,
+                jdk: '',
+                results: [[path: 'allure-results']]
+            ])
         }
     }
 }
