@@ -48,7 +48,7 @@ test('Verify at least 6 inventory items are loaded', async ({ page }) => {
     await expect(itemCount).toBeGreaterThanOrEqual(6);
 });
 
-test.only('Verify cart badge updates dynamically', async ({ page }) => {
+test('Verify cart badge updates dynamically', async ({ page }) => {
     const loginPage = new LoginPage(page);
     const inventoryPage = new InventoryPage(page);
 
